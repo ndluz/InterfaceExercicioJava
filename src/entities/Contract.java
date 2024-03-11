@@ -1,16 +1,17 @@
 package entities;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Contract {
 
 	private Integer number;
-	private Date date;
+	private LocalDate date;
 	private Double totalValue;
-	private List<Installment> installments;
+	private List<Installment> installments = new ArrayList<>();
 	
-	public Contract(Integer number, Date date, Double totalValue) {
+	public Contract(Integer number, LocalDate date, Double totalValue) {
 		this.number = number;
 		this.date = date;
 		this.totalValue = totalValue;
@@ -23,12 +24,17 @@ public class Contract {
 	public List<Installment> getInstallments() {
 		return this.installments;
 	}
+	
+	public String getInstallment(int index) {
+		Installment installment = this.installments.get(index);
+		return installment.getDueDate() + " " + installment.getAmount();
+	}
 
 	public Integer getNumber() {
 		return number;
 	}
 
-	public Date getDate() {
+	public LocalDate getDate() {
 		return date;
 	}
 
